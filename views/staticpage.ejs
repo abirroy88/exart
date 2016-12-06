@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head><% include partials/template/head.ejs %></head>
+  <header><% include partials/template/header.ejs %></header>
+  <body>
+
+    <div class="content">
+      <%
+        if(title == 'about'){ %>
+         <%  include partials/content/about.ejs %>
+       <% } else if(title == 'terms') { %>
+         <%  include partials/content/terms.ejs %>
+       <% } else if(title == 'sign') { %>
+         <%  include partials/content/sign.ejs %>
+       <% } %>
+    </div>
+  <% include partials/template/footer.ejs %>
+  </body>
+</html>
