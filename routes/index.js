@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
 /* GET sign page */
 router.get('/sign', function(req, res, next) {
-  res.render('./pages/sign');
+  res.render('./pages/sign', {title: 'Sign'});
 });
 /* POST form data */
 router.post('/sign/:id', function(req, res) {
