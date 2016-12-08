@@ -4,7 +4,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
+var expressValidator = require('express-validator');
+var expressSession = require('express-session');
+
+var routes = require('./routes/index');
 
 var app = express();
 
@@ -19,10 +22,11 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', index);
+app.use(expressSession({secret: 'abir', saveUninitialized: false, resave: false}));
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
